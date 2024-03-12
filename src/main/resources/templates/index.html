@@ -1,0 +1,43 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Management</title>
+    <style>
+       a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<table border="1" style="margin: auto; width: 800px; height: 400px; text-align: center;
+ border-collapse: collapse;">
+    <thead >
+    <tr style="background-color: green; color: white; font-size: 20px;">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{/add(id=${user.id})}" style="color:darkblue;">Add</a>
+        </td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${user.id})}" style="color:darkorange;">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/delete/{id}(id=${user.id})}" style="color: red;">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
